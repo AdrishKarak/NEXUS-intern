@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SignInButton, UserButton, useUser } from '@clerk/clerk-react';
 import { motion } from 'framer-motion';
+import worldMap from '../assets/world-map.png';
+
 
 const Home = () => {
     const { isSignedIn } = useUser();
@@ -205,6 +207,136 @@ const Home = () => {
                     </motion.div>
                 </div>
             </section>
+
+            {/* ================= PREMIUM BOTTOM SECTION ================= */}
+            <section id="contact" className="relative py-40 bg-neutral-950 overflow-hidden">
+
+                {/* Background Glow Effects */}
+                <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-pink-600/10 rounded-full blur-[180px]" />
+                <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-rose-600/10 rounded-full blur-[180px]" />
+
+                <div className="relative max-w-7xl mx-auto px-6 space-y-32">
+
+                    {/* ================= COMPANIES ================= */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="text-center"
+                    >
+                        <h3 className="text-4xl md:text-5xl font-black mb-12">
+                            Trusted by Industry Leaders Since 2015
+                        </h3>
+
+                        <div className="flex flex-wrap justify-center gap-8">
+                            {['Google', 'Meta', 'Netflix', 'Amazon', 'Uber', 'Stripe'].map((company, index) => (
+                                <div
+                                    key={index}
+                                    className="px-10 py-5 bg-gradient-to-br from-white/5 to-white/0 border border-white/10 rounded-2xl text-gray-300 text-lg font-semibold backdrop-blur-xl hover:border-pink-500/50 hover:-translate-y-2 transition-all duration-300"
+                                >
+                                    {company}
+                                </div>
+                            ))}
+                        </div>
+                    </motion.div>
+
+                    {/* ================= MASSIVE FREE TRIAL CARD ================= */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="relative"
+                    >
+                        {/* Glow Background */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-rose-600 rounded-[3rem] blur-3xl opacity-30" />
+
+                        <div className="relative overflow-hidden bg-gradient-to-r from-pink-600 to-rose-600 rounded-[3rem] p-16 md:p-24 border border-pink-500/40 backdrop-blur-2xl flex items-center">
+
+                            {/* LEFT CONTENT */}
+                            <div className="relative z-10 max-w-2xl">
+                                <h3 className="text-4xl md:text-6xl font-black mb-6 leading-tight">
+                                    Feel Free to Join our 15 Days Free Trial
+                                </h3>
+
+                                <p className="text-lg text-white/85 mb-10">
+                                    Experience enterprise-level performance, automation and
+                                    real-time analytics — completely free.
+                                </p>
+
+                                <SignInButton mode="modal">
+                                    <button className="px-12 py-5 bg-black text-white rounded-full font-bold text-lg hover:bg-neutral-900 hover:scale-105 transition-all duration-300 shadow-2xl">
+                                        Get Started →
+                                    </button>
+                                </SignInButton>
+                            </div>
+
+                            {/* RIGHT SIDE WORLD MAP */}
+                            <div className="absolute right-[-10%] top-1/2 -translate-y-1/2 h-[120%] w-[60%] pointer-events-none">
+                                <img
+                                    src={worldMap}
+                                    alt="World Map"
+                                    className="h-full w-full object-contain opacity-35"
+                                />
+                            </div>
+
+                            {/* Light overlay for readability */}
+                            <div className="absolute inset-0 bg-black/20 pointer-events-none rounded-[3rem]" />
+                        </div>
+                    </motion.div>
+
+
+                    {/* ================= CONTACT SECTION ================= */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="max-w-4xl mx-auto"
+                    >
+                        <div className="bg-gradient-to-br from-white/5 to-white/0 border border-white/10 rounded-3xl p-14 backdrop-blur-xl">
+
+                            <h2 className="text-5xl font-black text-center mb-6">
+                                Get In Touch
+                            </h2>
+
+                            <p className="text-gray-400 text-center mb-12">
+                                Have questions? We'd love to hear from you.
+                            </p>
+
+                            <form className="space-y-6">
+                                <input
+                                    type="text"
+                                    placeholder="Your Name"
+                                    className="w-full p-5 bg-black/60 border border-white/20 rounded-xl focus:border-pink-500 outline-none transition"
+                                />
+                                <input
+                                    type="email"
+                                    placeholder="Your Email"
+                                    className="w-full p-5 bg-black/60 border border-white/20 rounded-xl focus:border-pink-500 outline-none transition"
+                                />
+                                <textarea
+                                    rows="5"
+                                    placeholder="Your Message"
+                                    className="w-full p-5 bg-black/60 border border-white/20 rounded-xl focus:border-pink-500 outline-none transition"
+                                ></textarea>
+
+                                <div className="text-center pt-4">
+                                    <button
+                                        type="submit"
+                                        className="px-12 py-5 bg-gradient-to-r from-pink-600 to-rose-600 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-pink-500/40 hover:scale-105 transition-all duration-300"
+                                    >
+                                        Send Message
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </motion.div>
+
+                </div>
+            </section>
+
 
             {/* Footer */}
             <footer className="border-t border-pink-500/20 py-16">
